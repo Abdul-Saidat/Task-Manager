@@ -1,2 +1,2 @@
-# Task-Manager-
+# Task-Manager
 Task management application
