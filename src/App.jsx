@@ -52,7 +52,7 @@ function App() {
   return (
     <>
       {showForm && <TaskForm onAddTask={onAddTask} setShowForm={setShowForm} />}
-      <section className="px-5 py-6 relative bg-[#f5f9fc]">
+      <main className="px-5 py-6 relative bg-[#f5f9fc]">
         <header className="text-4xl"> Task Manager </header>
         <p>Organize your day, achieve your goals.</p>
         <button
@@ -108,7 +108,7 @@ function App() {
           formatId
         />
         <EmailInput />
-      </section>
+      </main>
     </>
   );
 }
