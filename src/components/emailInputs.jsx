@@ -1,43 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function EmailInput() {
+  const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [email, setEmail] = useState("")
-  const [emails, setEmails] = useState(() => {
-    const saved = localStorage.getItem("emails");
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("emails", JSON.stringify(emails));
-  }, [emails]);
 
   const handleEmailSubmit = () => {
-    if (!email.trim()) {
+    if (!email) {
       setEmailError("Email required");
       return;
     }
-
-    setEmailError("");
-
-    setEmails((prev) => [...prev, email]);
-
     if (!/\S+@\S+\.\S+/.test(email)) {
       setEmailError("Invalid email");
       return;
     }
 
-    setEmail("");
-    console.log(emails);
-
+    setEmailError("");
     alert("Subscribed successfully");
   };
   return (
     <>
-    <div className="max-w-md mx-auto">
-
-      <div className=" mt-10 flex flex-col items-center justify-center">
-        <h1 className="text-[25px] lg:text-[30px] font-bold ">Get early access to future feature launches</h1>
+      <div>
+        <h1>Join the waitlist</h1>
         <p>
           Join an exclusive waitlist and be the first to discover new,
           innovative features that helps you keep track of your tasks and goals.
@@ -48,7 +31,7 @@ function EmailInput() {
             onSubmit={(e) => {
               (e.preventDefault(), handleEmailSubmit());
             }}
-            >
+          >
             {/* <h2>Join the waitlist</h2> */}
             <p>Sign up now for early notification upon launch.</p>
             <input
@@ -57,15 +40,11 @@ function EmailInput() {
               id="email"
               placeholder="Enter Your Email"
               className="px-3 py-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              />
-            <button type="submit">Join Waitlist</button>
-            <span className="text-red-500">{emailError}</span>
+            />
+            <button>Join Waitlist</button>
           </form>
         </div>
       </div>
-              </div>
     </>
   );
 }
