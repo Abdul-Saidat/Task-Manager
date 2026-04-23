@@ -1,4 +1,5 @@
 import TaskItem from "./TaskItem";
+import { ClipboardList } from "lucide-react";
 
 function TaskList({ filteredTasks, toggleTask, deleteTask }) {
   const formatId = (timestamp) =>
@@ -9,12 +10,17 @@ function TaskList({ filteredTasks, toggleTask, deleteTask }) {
     });
   return (
     <>
-      <div className="mt-8">
-        <div className="w-full flex flex-col gap-4 bg-white border border-[#e6e9ed] rounded-2xl ">
+      <div className="">
           {filteredTasks.length === 0 && (
-            <p>No tasks yet. Add one to get started!</p>
+            <div className="flex flex-col items-center justify-center">
+
+            <ClipboardList size={40} className="text-gray-300 mb-2" />
+            <p className="text-[#999] text-center">No tasks yet.<br /> Add one to get started!</p>
+            </div>
           )}
+
           {filteredTasks.map((task) => (
+        <div className="  w-full flex flex-col bg-white border border-[#e6e9ed] rounded-2xl ">
             <TaskItem
               key={task.id}
               task={task}
@@ -22,8 +28,8 @@ function TaskList({ filteredTasks, toggleTask, deleteTask }) {
               deleteTask={deleteTask}
               formatId={formatId}
             />
-          ))}
         </div>
+          ))}
       </div>
     </>
   );
