@@ -73,26 +73,27 @@ function App() {
             <div className="flex overflow-x-auto gap-4 scrollbar-hide lg:flex-wrap">
               <button
                 onClick={() => setFilter("all")}
-                className={`${filter === "all" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 hover:shadow-lg rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+                className={`${filter === "all" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
               >
                 All
               </button>
               <button
                 onClick={() => setFilter("completed")}
-                className={`${filter === "completed" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 hover:shadow-lg rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+                className={`${filter === "completed" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
               >
                 Completed
               </button>
-              <div className="w-px bg-gray-200 mx-2 self-stretch" />
+              {/* <div className="w-[1px] bg-gray-300 h-5 mx-1 self-center" /> */}
+              <div style={{ width: "1px", height: "24px", backgroundColor: "#d1d5db" }} className="self-center mx-2" />
               <button
                 onClick={() => setFilter("work")}
-                className={`${filter === "work" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 hover:shadow-lg rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+                className={`${filter === "work" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
               >
                 Work
               </button>
               <button
                 onClick={() => setFilter("personal")}
-                className={`${filter === "personal" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 hover:shadow-lg rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+                className={`${filter === "personal" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
               >
                 Personal
               </button>
