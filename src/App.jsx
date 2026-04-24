@@ -3,7 +3,8 @@ import "./App.css";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 // import EmailInput from "./components/EmailInput";
-import EmailInput from "./components/EmailInput"
+// import EmailInput from "./components/EmailInput"
+import Email from "./components/Email";
 import { Plus } from "lucide-react";
 
 function App() {
@@ -113,7 +114,7 @@ function App() {
               />
             </div>
             <div>
-              <EmailInput />
+              <Email />
             </div>
           </section>
         </main>
