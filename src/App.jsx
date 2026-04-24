@@ -103,7 +103,7 @@ function App() {
                 className={`${filter === "school" ? `bg-black text-white shadow-lg` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 hover:shadow-lg rounded-md cursor-pointer transition duration-200 hover:scale-102`}
               >
                 School
-              </button>
+              </button>  
             </div>
             <div>
               <TaskList
