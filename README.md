@@ -1,8 +1,55 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight task manager that helps you create, categorize and track your daily tasks.
 
-Currently, two official plugins are available:
+## Features
+
+- Create tasks
+
+- Select task category
+
+- Mark task as completed
+
+- Filter task based on completion status and category
+
+- Delete task
+
+- Email input to join the waitlist
+
+## Tech stack
+
+- [React](https://react.dev/) + [Tailwind CSS](https://tailwindcss.com/)
+
+[Live link](https://task-manager-seven-phi-39.vercel.app/)
+
+## Getting Started
+
+### Installation
+
+1. Clone the repository
+
+```
+ git clone <repository-url>
+ cd task-manager
+```
+
+2. Install dependencies
+
+```
+ # Using pnpm
+ pnpm install
+
+ # Using bun
+ bun install
+
+ # Using npm
+ npm install
+```
+
+3. Start the development server
+   `npm run dev`
+
+4. Open the application, navigate to `http://localhost:5173`
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
