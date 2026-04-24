@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function Email() {
-const [emailError, setEmailError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
   const [emails, setEmails] = useState(() => {
     const saved = localStorage.getItem("emails");
@@ -18,18 +18,16 @@ const [emailError, setEmailError] = useState("");
       return;
     }
 
-    setEmailError("");
-
-    setEmails((prev) => [...prev, email]);
-
     if (!/\S+@\S+\.\S+/.test(email)) {
       setEmailError("Invalid email");
       return;
     }
 
-    setEmail("");
-    console.log(emails);
+    setEmailError("");
 
+    setEmails((prev) => [...prev, email]);
+
+    setEmail("");
     alert("Subscribed successfully");
   };
   return (
@@ -45,18 +43,14 @@ const [emailError, setEmailError] = useState("");
             goals.
           </p>
           <div className="w-full mt-2">
-            <form
-              action=""
-              onSubmit={(e) => {
-                (e.preventDefault(), handleEmailSubmit());
-              }}
-            >
+            <form onSubmit={handleEmailSubmit}>
               <div className="flex items-center justify-center gap-2">
                 <input
                   type="email"
                   name="email"
                   id="email"
                   placeholder="Enter Your Email"
+                  required
                   className="p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
