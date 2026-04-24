@@ -44,20 +44,20 @@ function Email() {
           </p>
           <div className="mt-2">
             <form onSubmit={handleEmailSubmit}>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 w-full px-4">
                 <input
                   type="email"
                   name="email"
                   id="email"
                   placeholder="Enter Your Email"
                   required
-                  className="flex-1 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none"
+                  className="flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
                   type="submit"
-                  className="p-2 lg:px-4 lg:py-2 bg-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap"
+                  className="p-2 lg:px-4 lg:py-2 bg-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap flex-shrink-0"
                 >
                   Join Waitlist
                 </button>
