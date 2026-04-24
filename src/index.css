@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background-color: #f5f9fc;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

@@ -42,7 +42,7 @@ function Email() {
             innovative features that helps you keep track of your tasks and
             goals.
           </p>
-          <div className="w-full mt-2">
+          <div className="mt-2">
             <form onSubmit={handleEmailSubmit}>
               <div className="flex items-center justify-center gap-2">
                 <input
