@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
-import EmailInput from "./components/EmailInput";
+// import EmailInput from "./components/EmailInput";
+import EmailInput from "./components/EmailInput"
 import { Plus } from "lucide-react";
 
 function App() {
