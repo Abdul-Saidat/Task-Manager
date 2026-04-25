@@ -12,7 +12,9 @@ function Email() {
     localStorage.setItem("emails", JSON.stringify(emails));
   }, [emails]);
 
-  const handleEmailSubmit = () => {
+  const handleEmailSubmit = (e) => {
+    e.preventDefault();
+    
     if (!email.trim()) {
       setEmailError("Email required");
       return;
@@ -43,7 +45,11 @@ function Email() {
             goals.
           </p>
           <div className="mt-2 w-full">
-            <form onSubmit={handleEmailSubmit} className="w-full">
+            <form
+              name="waitlist"
+              onSubmit={handleEmailSubmit}
+              className="w-full"
+            >
               <div className="flex items-center gap-2 w-full">
                 <input
                   type="email"
