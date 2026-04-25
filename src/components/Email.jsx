@@ -57,7 +57,7 @@ function Email() {
                 />
                 <button
                   type="submit"
-                  className="p-2 lg:px-4 lg:py-2 bg-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap flex-shrink-0"
+                  className="p-2 lg:px-4 lg:py-2 bg-blue-500 border border-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap flex-shrink-0"
                 >
                   Join Waitlist
                 </button>
