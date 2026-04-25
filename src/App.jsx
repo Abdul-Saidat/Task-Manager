@@ -4,6 +4,7 @@ import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import Email from "./components/Email";
 import { Plus } from "lucide-react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -52,6 +53,7 @@ function App() {
   });
   return (
     <>
+    <ToastContainer />
       <section>
         {showForm && (
           <TaskForm onAddTask={onAddTask} setShowForm={setShowForm} />

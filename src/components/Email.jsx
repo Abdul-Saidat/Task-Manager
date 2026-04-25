@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 function Email() {
   const [emailError, setEmailError] = useState("");
@@ -14,6 +15,7 @@ function Email() {
 
   const handleEmailSubmit = (e) => {
     e.preventDefault();
+    toast.success("Subscribed successfully")
     
     if (!email.trim()) {
       setEmailError("Email required");
@@ -30,7 +32,8 @@ function Email() {
     setEmails((prev) => [...prev, email]);
 
     setEmail("");
-    alert("Subscribed successfully");
+    // toast("Subscribed successfully");
+    // <ToastContainer />
   };
   return (
     <>
@@ -64,9 +67,10 @@ function Email() {
                 <button
                   type="submit"
                   className="p-2 lg:px-4 lg:py-2 bg-blue-500 border border-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap flex-shrink-0"
-                >
+               >
                   Join Waitlist
                 </button>
+                <ToastContainer />
               </div>
               <span className="text-red-500 text-center">{emailError}</span>
             </form>
