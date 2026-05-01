@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Plus } from "lucide-react";
+import { ToastContainer } from "react-toastify";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import Email from "./components/Email";
-import { Plus } from "lucide-react";
-import { ToastContainer } from "react-toastify";
+import PricingSection from "./components/pricing/PricingSection";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -112,11 +113,15 @@ function App() {
                 toggleTask={toggleTask}
                 deleteTask={deleteTask}
                 formatId
+                setTasks={setTasks}
               />
             </div>
             <div>
               <Email />
             </div>
+            <section id="pricing">
+              <PricingSection />
+            </section>
           </section>
         </main>
       </section>

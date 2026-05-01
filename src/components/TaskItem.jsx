@@ -1,7 +1,8 @@
 import { Trash2 } from "lucide-react";
 import { Calendar } from "lucide-react";
+import EditModal from "./editModal";
 
-function TaskItem({ task, toggleTask, deleteTask, formatId }) {
+function TaskItem({ task, toggleTask, deleteTask, formatId, handleEdit }) {
   return (
     <>
       <div key={task.id}>
@@ -27,6 +28,12 @@ function TaskItem({ task, toggleTask, deleteTask, formatId }) {
                   <Calendar className="w-4 h-4" />
                   {formatId(task.createdAt)}
                 </span>
+                <button
+                  onClick={() => handleEdit(task.id)}
+                  className="text-[14px] px-3 py-1 rounded-full bg-[#a5c7f5] text-blue-600 cursor-pointer"
+                >
+                  Edit task
+                </button>
               </div>
             </div>
           </div>
