@@ -1,10 +1,20 @@
 import { Trash2 } from "lucide-react";
 import { Calendar } from "lucide-react";
 import EditModal from "./editModal";
+import DeleteModal from "./DeleteModal";
+// import { useState } from "react";
 
-function TaskItem({ task, toggleTask, deleteTask, formatId, handleEdit }) {
+function TaskItem({ task, toggleTask, formatId, handleEdit, setTaskToDelete, setIsDeleteModalOpen }) {
+
+
+  const handleDeleteClick = (id) => {
+        setTaskToDelete(id)
+        setIsDeleteModalOpen(true)
+
+    }
   return (
     <>
+    {/* {isDeleteModalOpen && <DeleteModal />} */}
       <div key={task.id}>
         <div className="px-4 lg:px-6 py-7 flex hover:bg-[#f9fafc]">
           <div className="flex items-start">
@@ -39,7 +49,7 @@ function TaskItem({ task, toggleTask, deleteTask, formatId, handleEdit }) {
           </div>
           <button
             className="cursor-pointer ml-auto pl-6"
-            onClick={() => deleteTask(task.id)}
+            onClick={() => handleDeleteClick()}
           >
             <Trash2 className="w-4 h-4 lg:w-5 lg:h-5" />
           </button>

@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { ClipboardList } from "lucide-react";
 import TaskItem from "./TaskItem";
 import EditModal from "./editModal";
-import { ClipboardList } from "lucide-react";
+import DeleteModal from "./DeleteModal";
 
 function TaskList({ filteredTasks, toggleTask, deleteTask, setTasks }) {
   const formatId = (timestamp) =>
@@ -15,6 +16,8 @@ function TaskList({ filteredTasks, toggleTask, deleteTask, setTasks }) {
   const [editTask, setEditTask] = useState(null);
   const [editText, setEditText] = useState("");
   const [editCategory, setEditCategory] = useState("school");
+ const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const [taskToDelete, setTaskToDelete] = useState(null)
 
   const saveEditedTask = () => {
     // editTask = which task am i editing exactly; editText = what text is currently inside the input
@@ -38,6 +41,16 @@ function TaskList({ filteredTasks, toggleTask, deleteTask, setTasks }) {
     setEditCategory(selectedTask.category);
     setIsEditModalOpen(true);
   };
+
+  const confirmDelete = () => {
+  const updated = tasks.filter(task => task.id !== taskToDelete);
+
+  setTasks(updated);
+  localStorage.setItem("tasks", JSON.stringify(updated));
+
+  setIsDeleteModalOpen(false);
+  setTaskToDelete(null);
+};
   return (
     <>
       <div className="">
@@ -60,6 +73,9 @@ function TaskList({ filteredTasks, toggleTask, deleteTask, setTasks }) {
                 toggleTask={toggleTask}
                 deleteTask={deleteTask}
                 formatId={formatId}
+                setIsDeleteModalOpen={setIsDeleteModalOpen}
+                setTaskToDelete={setTaskToDelete}
+
               />
               {index < filteredTasks.length - 1 && (
                 <div className="border-t border-[#e6e9ed]" />
@@ -77,6 +93,8 @@ function TaskList({ filteredTasks, toggleTask, deleteTask, setTasks }) {
               saveEditedTask={saveEditedTask}
             />
           )}
+    {isDeleteModalOpen && <DeleteModal onCancel={() => setIsDeleteModalOpen(false)} onConfirm={confirmDelete} />}
+
         </div>
       </div>
     </>
