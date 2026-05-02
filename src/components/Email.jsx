@@ -13,27 +13,33 @@ function Email() {
     localStorage.setItem("emails", JSON.stringify(emails));
   }, [emails]);
 
+  const normalizedEmail = email.toLowerCase().trim();
+  const storedEmails = JSON.parse(localStorage.getItem("emails")) || [];
+
+  const handleChange = (e) => {
+    setEmail(e.target.value)
+    setEmailError("")
+  }
+
   const handleEmailSubmit = (e) => {
     e.preventDefault();
-    toast.success("Subscribed successfully")
     
     if (!email.trim()) {
       setEmailError("Email required");
-      return;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setEmailError("Invalid email format");
+    } else if (storedEmails.includes(normalizedEmail)) {
+      setEmailError("Email already exists");
+    } else {
+      const updatedEmails = [...storedEmails, normalizedEmail];
+      localStorage.setItem("emails", JSON.stringify(updatedEmails));
+      
+      setEmails((prev) => [...prev, updatedEmails]);
+      
+      setEmail("");
+      toast.success("Subscribed successfully");
+      setEmailError("");
     }
-
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError("Invalid email");
-      return;
-    }
-
-    setEmailError("");
-
-    setEmails((prev) => [...prev, email]);
-
-    setEmail("");
-    // toast("Subscribed successfully");
-    // <ToastContainer />
   };
   return (
     <>
@@ -59,15 +65,15 @@ function Email() {
                   name="email"
                   id="email"
                   placeholder="Enter Your Email"
-                  required
+                  // required
                   className="flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleChange}
                 />
                 <button
                   type="submit"
-                  className="p-2 lg:px-4 lg:py-2 bg-blue-500 border border-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap flex-shrink-0"
-               >
+                  className="p-2 lg:px-4 lg:py-2 bg-blue-500 border border-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap shrink-0"
+                >
                   Join Waitlist
                 </button>
                 <ToastContainer />

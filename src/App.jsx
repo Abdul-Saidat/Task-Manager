@@ -8,6 +8,7 @@ import Email from "./components/Email";
 import EditModal from "./components/editModal";
 import DeleteModal from "./components/DeleteModal";
 import PricingSection from "./components/pricing/PricingSection";
+import QuoteBox from "./components/QuoteBox";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -58,10 +59,31 @@ function App() {
   const filteredTasks = tasks.filter((task) => {
     if (filter === "all") return true;
     if (filter === "completed") return task.completed;
-    console.log("amount completed", task.completed.length);
 
     return task.category === filter;
   });
+
+  const completedTasks = tasks.filter((task) => {
+    if (task.completed === true) {
+      return task.completed;
+    }
+  });
+
+  const getCategoryStats = (tasks, category) => {
+    const total = tasks.filter((task) => task.category === category).length;
+
+    const completed = tasks.filter(
+      (task) => task.category === category && task.completed,
+    ).length;
+
+    return { total, completed };
+  };
+
+  const work = getCategoryStats(tasks, "work");
+
+  const school = getCategoryStats(tasks, "school");
+
+  const personal = getCategoryStats(tasks, "personal");
 
   const saveEditedTask = () => {
     // editTask = which task am i editing exactly; editText = what text is currently inside the input
@@ -135,6 +157,7 @@ function App() {
           >
             <Plus className="w-4 h-4 lg:h-5 lg:w-5" /> Add task
           </button>
+          <QuoteBox />
           <section className="mt-10 flex flex-col gap-10">
             <div className="flex overflow-x-auto gap-4 scrollbar-hide lg:flex-wrap">
               <button
@@ -176,12 +199,40 @@ function App() {
               >
                 School
               </button>
-              <div className="w-65 p-10 border rounded-2xl">
-                <span className="text-purple-700">1</span> of
-               <span className="text-purple-700"> {tasks.length}</span> tasks completed
-                {/* name */}
-              </div>
             </div>
+            <section className="flex flex-col lg:flex-row gap-3">
+              <div className="w-65 p-10 border rounded-2xl">
+                <span className="text-purple-700">{completedTasks.length}</span>
+                of
+                <span className="text-purple-700"> {tasks.length}</span> tasks
+                completed
+              </div>
+              <div className="w-65 p-10 border rounded-2xl">
+                <p>
+                  {" "}
+                  work: {work.completed} / {work.total}{" "}
+                </p>
+                <p>Total: {work.total}</p>
+                <p>Completed: {work.completed}</p>
+                <p>Progress: {(work.completed / work.total) * 100}%</p>
+              </div>
+              <div className="w-65 p-10 border rounded-2xl">
+                <p>
+                  school: {school.completed} / {school.total}
+                </p>
+                <p>Total: {school.total}</p>
+                <p>Completed: {school.completed}</p>
+                <p>Progress: {(school.completed / school.total) * 100}%</p>
+              </div>
+              <div className="w-65 p-10 border rounded-2xl">
+                <p>
+                  personal: {personal.completed} / {personal.total} Completed
+                </p>
+                <p>Total: {personal.total}</p>
+                <p>Completed: {personal.completed}</p>
+                <p>Progress: {(personal.completed / personal.total) * 100}%</p>
+              </div>
+            </section>
             <div>
               <TaskList
                 filteredTasks={filteredTasks}
