@@ -5,11 +5,19 @@ import { ToastContainer } from "react-toastify";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import Email from "./components/Email";
+import EditModal from "./components/editModal";
+import DeleteModal from "./components/DeleteModal";
 import PricingSection from "./components/pricing/PricingSection";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [filter, setFilter] = useState("all");
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editTask, setEditTask] = useState(null);
+  const [editText, setEditText] = useState("");
+  const [editCategory, setEditCategory] = useState("school");
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [taskToDelete, setTaskToDelete] = useState(null);
 
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
@@ -50,20 +58,75 @@ function App() {
   const filteredTasks = tasks.filter((task) => {
     if (filter === "all") return true;
     if (filter === "completed") return task.completed;
+    console.log("amount completed", task.completed.length);
+
     return task.category === filter;
   });
+
+  const saveEditedTask = () => {
+    // editTask = which task am i editing exactly; editText = what text is currently inside the input
+
+    const updatedTasks = filteredTasks.map((task) =>
+      task.id === editTask.id
+        ? { ...task, text: editText, category: editCategory }
+        : task,
+    );
+
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    setIsEditModalOpen(false);
+  };
+
+  const handleEdit = (id) => {
+    const selectedTask = filteredTasks.find((task) => task.id === id);
+
+    setEditTask(selectedTask);
+    setEditText(selectedTask.text);
+    setEditCategory(selectedTask.category);
+    setIsEditModalOpen(true);
+  };
+
+  const handleDeleteClick = (id) => {
+    setTaskToDelete(id);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    const updated = tasks.filter((task) => task.id !== taskToDelete);
+
+    setTasks(updated);
+    localStorage.setItem("tasks", JSON.stringify(updated));
+
+    setIsDeleteModalOpen(false);
+    setTaskToDelete(null);
+  };
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <section>
+        {isEditModalOpen && (
+          <EditModal
+            setIsEditModalOpen={setIsEditModalOpen}
+            editTask={editTask}
+            editText={editText}
+            setEditText={setEditText}
+            editCategory={editCategory}
+            setEditCategory={setEditCategory}
+            saveEditedTask={saveEditedTask}
+          />
+        )}
+        {isDeleteModalOpen && (
+          <DeleteModal
+            onCancel={() => setIsDeleteModalOpen(false)}
+            onConfirm={confirmDelete}
+          />
+        )}
         {showForm && (
           <TaskForm onAddTask={onAddTask} setShowForm={setShowForm} />
         )}
         <main className="px-5 py-10 relative bg-[#f5f9fc]">
           <div>
-            <header className="text-4xl tracking-tighter">
-              Task Manager
-            </header>
+            <header className="text-4xl tracking-tighter">Task Manager</header>
             <p>Organize your day, achieve your goals.</p>
           </div>
           <button
@@ -87,7 +150,14 @@ function App() {
                 Completed
               </button>
               {/* <div className="w-[1px] bg-gray-300 h-5 mx-1 self-center" /> */}
-              <div style={{ width: "1px", height: "24px", backgroundColor: "#d1d5db" }} className="self-center mx-2" />
+              <div
+                style={{
+                  width: "1px",
+                  height: "24px",
+                  backgroundColor: "#d1d5db",
+                }}
+                className="self-center mx-2"
+              />
               <button
                 onClick={() => setFilter("work")}
                 className={`${filter === "work" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
@@ -105,7 +175,12 @@ function App() {
                 className={`${filter === "school" ? `bg-black text-white shadow-lg` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 hover:shadow-lg rounded-md cursor-pointer transition duration-200 hover:scale-102`}
               >
                 School
-              </button>  
+              </button>
+              <div className="w-65 p-10 border rounded-2xl">
+                <span className="text-purple-700">1</span> of
+               <span className="text-purple-700"> {tasks.length}</span> tasks completed
+                {/* name */}
+              </div>
             </div>
             <div>
               <TaskList
@@ -114,6 +189,9 @@ function App() {
                 deleteTask={deleteTask}
                 formatId
                 setTasks={setTasks}
+                handleEdit={handleEdit}
+                saveEditedTask={saveEditedTask}
+                handleDeleteClick={handleDeleteClick}
               />
             </div>
             <div>
