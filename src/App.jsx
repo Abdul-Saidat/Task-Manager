@@ -9,6 +9,8 @@ import EditModal from "./components/editModal";
 import DeleteModal from "./components/DeleteModal";
 import PricingSection from "./components/pricing/PricingSection";
 import QuoteBox from "./components/QuoteBox";
+import ProgressBar from "./components/ProgressBar";
+import { getProgress } from "./utils/taskHelpers";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -43,6 +45,8 @@ function App() {
       },
     ]);
   }
+
+  const percentage = getProgress(tasks)
 
   const toggleTask = (id) => {
     setTasks((prev) =>
@@ -146,7 +150,7 @@ function App() {
         {showForm && (
           <TaskForm onAddTask={onAddTask} setShowForm={setShowForm} />
         )}
-        <main className="px-5 py-10 relative bg-[#f5f9fc]">
+        <main className="mx-auto max-w-275 px-4 py-8 relative bg-[#f5f9fc]">
           <div>
             <header className="text-4xl tracking-tighter">Task Manager</header>
             <p>Organize your day, achieve your goals.</p>
@@ -157,7 +161,71 @@ function App() {
           >
             <Plus className="w-4 h-4 lg:h-5 lg:w-5" /> Add task
           </button>
-          <QuoteBox />
+          <div className="w-xl border-[#cfdfeb] text-center px-5 py-7 rounded-2xl ml-auto shadow-md bg-[#cfdfeb]">
+            <QuoteBox />
+          </div>
+          <section className="mt-10">
+            <div className="w-full px-5 py-5 rounded-md border border-blue-100 shadow-md">
+             <header>Overall Progress</header>
+             <p className="text-[#7376B2] text-sm mt-2">  <span className="">{completedTasks.length} </span>
+                of
+                <span className=""> {tasks.length}</span> tasks
+                completed </p>
+                <ProgressBar percentage={percentage} />
+                <div className="flex justify-between mt-5">
+                <p className="text-[#7376B2] text-sm"> {percentage}% Complete </p>
+                <p className="text-[#7376B2] text-sm"> {tasks.length - completedTasks.length} task(s) remaining </p>
+                </div>
+            </div>
+          </section>
+           <section className="mt-10">
+              {/* <div className="w-65 p-10 border rounded-2xl">
+                <span className="text-purple-700">{completedTasks.length}</span>
+                of
+                <span className="text-purple-700"> {tasks.length}</span> tasks
+                completed
+              </div> */}
+              <p>Categories</p>
+              <div className="flex flex-col lg:flex-row gap-4 mt-2">
+
+              <div className="w-full p-5 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md">
+                <p className="lg:text-xl font-medium">
+                  Work
+                </p>
+                <p className="text-[#7376B2] text-[14px]">{work.total} tasks</p>
+                <div className="flex justify-between">
+                <p className="text-[#7376B2] text-[14px] mt-2">Progress</p>
+                <p className="text-[#7376B2] text-[14px]">{ work.completed === 0 ? 0 : (work.completed / work.total) * 100}%</p>
+                </div>
+                <ProgressBar percentage={work.completed === 0 ? 0 : (work.completed / work.total) * 100} />
+                <p className="text-[#7376B2] text-[14px]">{work.completed}/{work.total} completed</p>
+              </div>
+              <div className="w-full p-5 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md">
+                <p className="lg:text-xl font-medium">
+                School
+                </p>
+                <p className="text-[#7376B2] text-[14px]">{school.total} tasks</p>
+                <div className="flex justify-between">
+                  <p className="text-[#7376B2] text-[14px] mt-2">Progress</p>
+                  <p className="text-[#7376B2] text-[14px]">{school.completed === 0 ? 0 : (school.completed / school.total) * 100}%</p>
+                </div>
+                <ProgressBar percentage={school.completed === 0 ? 0 : (school.completed / school.total) * 100} />
+                <p className="text-[#7376B2] text-[14px]"> {school.completed}/{school.total} completed</p>
+              </div>
+              <div className="w-full p-5 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md">
+                <p className="lg:text-xl font-medium">
+                  Personal
+                </p>
+                <p className="text-[#7376B2] text-[14px]">{personal.total} tasks</p>
+               <div className="flex justify-between">
+                <p className="text-[#7376B2] text-[14px] mt-2">Progress</p>
+                <p className="text-[#7376B2] text-[14px]">{personal.total === 0 ? 0 : (personal.completed / personal.total) * 100}%</p>
+               </div>
+                <ProgressBar percentage={personal.completed === 0 ? 0 : (personal.completed / personal.total) * 100} />
+                <p className="text-[#7376B2] text-[14px]">{personal.completed / personal.total} completed</p>
+              </div>
+              </div>
+            </section>
           <section className="mt-10 flex flex-col gap-10">
             <div className="flex overflow-x-auto gap-4 scrollbar-hide lg:flex-wrap">
               <button
@@ -200,39 +268,7 @@ function App() {
                 School
               </button>
             </div>
-            <section className="flex flex-col lg:flex-row gap-3">
-              <div className="w-65 p-10 border rounded-2xl">
-                <span className="text-purple-700">{completedTasks.length}</span>
-                of
-                <span className="text-purple-700"> {tasks.length}</span> tasks
-                completed
-              </div>
-              <div className="w-65 p-10 border rounded-2xl">
-                <p>
-                  {" "}
-                  work: {work.completed} / {work.total}{" "}
-                </p>
-                <p>Total: {work.total}</p>
-                <p>Completed: {work.completed}</p>
-                <p>Progress: {(work.completed / work.total) * 100}%</p>
-              </div>
-              <div className="w-65 p-10 border rounded-2xl">
-                <p>
-                  school: {school.completed} / {school.total}
-                </p>
-                <p>Total: {school.total}</p>
-                <p>Completed: {school.completed}</p>
-                <p>Progress: {(school.completed / school.total) * 100}%</p>
-              </div>
-              <div className="w-65 p-10 border rounded-2xl">
-                <p>
-                  personal: {personal.completed} / {personal.total} Completed
-                </p>
-                <p>Total: {personal.total}</p>
-                <p>Completed: {personal.completed}</p>
-                <p>Progress: {(personal.completed / personal.total) * 100}%</p>
-              </div>
-            </section>
+           
             <div>
               <TaskList
                 filteredTasks={filteredTasks}

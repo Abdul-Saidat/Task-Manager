@@ -6,9 +6,9 @@ const QuoteBox = () => {
     if (error) return <p> {error} </p>
 
     return (
-        <div>
+        <div className="">
             <p> {quote} </p>
-            <button onClick={refetch}>New Quote</button>
+            <button className="mt-5 border rounded-md px-3 py-3 text-white bg-black cursor-pointer" onClick={refetch}>New Quote</button>
         </div>
     )
 }

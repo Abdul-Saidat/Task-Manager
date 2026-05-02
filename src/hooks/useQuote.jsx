@@ -24,6 +24,7 @@ export const useQuote = () => {
             console.log("response:", res);
             
             setQuote(`${data[0].quote} - ${data[0].author}`)
+        //   const author = data[0].author
         } catch (error) {
             setError("Failed to load quotes")
             console.error(error);
