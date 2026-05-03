@@ -21,7 +21,7 @@ function TaskStats({completedTasks, tasks}) {
               <p className="text-[#7376B2] text-sm mt-2">
                 <span className="">{completedTasks.length} </span>
                 of
-                <span className=""> {tasks.length}</span> tasks completed{" "}
+                <span className=""> {tasks.length}</span> task(s) completed{" "}
               </p>
               <ProgressBar percentage={percentage} />
               <div className="flex justify-between mt-5">
