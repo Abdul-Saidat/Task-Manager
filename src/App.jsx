@@ -23,7 +23,9 @@ function App() {
         <HeroSection showForm={showForm} setShowForm={setShowForm} />
         <TaskSection showForm={showForm} setShowForm={setShowForm} />
         <Email />
-        <PricingSection />
+        <section id="pricing">
+          <PricingSection />
+        </section>
       </main>
     </>
   );

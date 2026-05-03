@@ -16,9 +16,43 @@ A lightweight task manager that helps you create, categorize and track your dail
 
 - Email input to join the waitlist
 
+- Persistent sorage using localStorage
+
+## Newly Added features - stage 4
+
+- Edit tasks
+
+- Delete task
+
+- Confirmation modal before deleting
+
+- Proper email input validation
+
+- Pricing section(UI only)
+
+- Progress tracking (overall + per category)
+
+## Key improvements 
+
+- Refactored logic into custom hooks
+
+- Separated UI into reusable components
+
+- Cleaned up task filtering and progress calculation
+
+- Organized layout into sections (HeroSection, Tasks, Pricing, etc.)
+
+## What I learnt
+
+- React component composition
+
+- Custom hooks for state logic separation
+
+- UI reusability patterns
+
 ## Tech stack
 
-- [React](https://react.dev/) + [Tailwind CSS](https://tailwindcss.com/)
+[React](https://react.dev/) + [Tailwind CSS](https://tailwindcss.com/)
 
 [Live link](https://task-manager-seven-phi-39.vercel.app/)
 
