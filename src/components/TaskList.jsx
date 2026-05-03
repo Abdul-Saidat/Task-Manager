@@ -20,6 +20,8 @@ function TaskList({
   return (
     <>
       <div className="">
+        {/* <header>Your tasks</header> */}
+        <h2 className="text-xl lg:text-3xl font-bold text-center mb-6 mt-8">Your tasks</h2>
         {filteredTasks.length === 0 && (
           <div className="flex flex-col items-center justify-center">
             <ClipboardList size={40} className="text-gray-300 mb-2" />

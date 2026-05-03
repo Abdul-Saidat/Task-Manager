@@ -43,8 +43,10 @@ function Email() {
   };
   return (
     <>
-      <div className="lg:max-w-lg mx-auto bg-white p-5 lg:p-10 z-50 shadow-sm rounded-2xl">
-        <div className=" flex flex-col gap-3 items-center justify-center">
+    {/* <header>Join Waitlist</header> */}
+    <h2 className="text-xl lg:text-3xl font-bold text-center mb-3">Join Waitlist</h2>
+      <div className=" mx-auto bg-white p-5 lg:p-10 z-50 shadow-sm rounded-2xl">
+        <div className=" flex flex-col gap-3 mx-auto max-w-lg">
           <h1 className="text-xl lg:text-[30px] font-bold text-blue-900 text-center leading-tight">
             Get early access to future feature launches
           </h1>
@@ -59,7 +61,7 @@ function Email() {
               onSubmit={handleEmailSubmit}
               className="w-full"
             >
-              <div className="flex items-center gap-2 w-full">
+              <div className="flex items-center gap-3 mt-5 w-full">
                 <input
                   type="email"
                   name="email"

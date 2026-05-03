@@ -13,7 +13,7 @@ function TaskItem({
   return (
     <>
       <div key={task.id}>
-        <div className="px-4 lg:px-6 py-7 flex hover:bg-[#f9fafc]">
+        <div className="px-4 lg:px-6 py-7 flex hover:bg-gray-50">
           <div className="flex items-start">
             <input
               type="checkbox"
@@ -21,9 +21,9 @@ function TaskItem({
               checked={task.completed}
               onChange={() => toggleTask(task.id)}
             />
-            <div className="flex flex-col gap-0.5 text-gray-600">
+            <div className="flex flex-col gap-0.5 text-[#111827]">
               <span
-                className={`${task.completed ? "line-through text-gray-200" : "none"} text-[18px] lg:text-xl font-semibold`}
+                className={`${task.completed ? "line-through opacity-[0.6]" : "none"} text-[18px] lg:text-xl font-semibold`}
               >
                 {task.text}
               </span>
