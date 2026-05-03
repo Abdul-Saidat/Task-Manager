@@ -13,38 +13,44 @@ function Email() {
     localStorage.setItem("emails", JSON.stringify(emails));
   }, [emails]);
 
-  const normalizedEmail = email.toLowerCase().trim();
-  const storedEmails = JSON.parse(localStorage.getItem("emails")) || [];
-
   const handleChange = (e) => {
-    setEmail(e.target.value)
-    setEmailError("")
-  }
+    setEmail(e.target.value);
+    setEmailError("");
+  };
 
   const handleEmailSubmit = (e) => {
     e.preventDefault();
-    
-    if (!email.trim()) {
+
+    const normalizedEmail = email.toLowerCase().trim();
+
+    if (!normalizedEmail) {
       setEmailError("Email required");
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError("Invalid email format");
-    } else if (storedEmails.includes(normalizedEmail)) {
-      setEmailError("Email already exists");
-    } else {
-      const updatedEmails = [...storedEmails, normalizedEmail];
-      localStorage.setItem("emails", JSON.stringify(updatedEmails));
-      
-      setEmails((prev) => [...prev, updatedEmails]);
-      
-      setEmail("");
-      toast.success("Subscribed successfully");
-      setEmailError("");
+      return;
     }
+
+    if (!/\S+@\S+\.\S+/.test(normalizedEmail)) {
+      setEmailError("Invalid email format");
+      return;
+    }
+
+    if (emails.includes(normalizedEmail)) {
+      setEmailError("Email already exists");
+      return;
+    }
+    setEmails((prev) => {
+      if (prev.includes(normalizedEmail)) return prev;
+      return [...prev, normalizedEmail];
+    });
+
+    setEmail("");
+    setEmailError("");
+    toast.success("Subscribed successfully");
   };
   return (
     <>
-    {/* <header>Join Waitlist</header> */}
-    <h2 className="text-xl lg:text-3xl font-bold text-center mb-3">Join Waitlist</h2>
+      <h2 className="text-xl lg:text-3xl font-bold text-center mb-3">
+        Join Waitlist
+      </h2>
       <div className=" mx-auto bg-white p-5 lg:p-10 z-50 shadow-sm rounded-2xl">
         <div className=" flex flex-col gap-3 mx-auto max-w-lg">
           <h1 className="text-xl lg:text-[30px] font-bold text-blue-900 text-center leading-tight">
@@ -68,7 +74,7 @@ function Email() {
                   id="email"
                   placeholder="Enter Your Email"
                   // required
-                  className="flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none"
+                  className={`${emailError ? "border border-red-500 flex-1 min-w-0 p-2 lg:px-3 lg:py-2 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full outline-none" : `flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none`}flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none`}
                   value={email}
                   onChange={handleChange}
                 />

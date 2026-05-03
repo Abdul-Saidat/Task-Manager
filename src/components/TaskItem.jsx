@@ -13,8 +13,8 @@ function TaskItem({
   return (
     <>
       <div key={task.id}>
-        <div className="px-4 lg:px-6 py-7 flex hover:bg-gray-50">
-          <div className="flex items-start">
+        <div className="px-4 lg:px-6 py-7 flex items-start hover:bg-gray-50">
+          <div className="flex items-start flex-1 min-w-0">
             <input
               type="checkbox"
               className="border border-gray-500 mr-2 lg:mr-4 mt-1.5 checked:bg-black text-white cursor-pointer rounded-full w-4 h-4 lg:h-5 lg:w-5 accent-black"

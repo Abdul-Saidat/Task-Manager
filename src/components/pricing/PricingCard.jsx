@@ -1,6 +1,6 @@
 const variantStyles = {
   free: "bg-white text-gray-800 border border-gray-200",
-  pro: "bg-indigo-600 text-white scale-105",
+  pro: "bg-indigo-600 text-white scale-105 mt-3 lg:mt-0",
   team: "bg-slate-800 text-white",
 }
 
