@@ -1,10 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
+import TaskForm from "../ui/TaskModal";
 
-function TaskForm({ setShowForm, onAddTask }) {
-  const [text, setText] = useState("");
-  const [category, setCategory] = useState("school");
+function TaskForms({ setShowForm, onAddTask }) {
+  // const [text, setText] = useState("");
+  // const [category, setCategory] = useState("school");
   return (
-    <div className="bg-black/50 fixed inset-0 flex items-center justify-center z-50 px-5 ">
+  <>
+  <TaskForm onClose={() => setShowForm(false)} onAddTask={onAddTask} />
+    {/* <div className="bg-black/50 fixed inset-0 flex items-center justify-center z-50 px-5 ">
       <div className="bg-white p-8 max-w-xl w-full lg:max-w-md rounded-2xl ">
         <form
           action=""
@@ -17,7 +20,7 @@ function TaskForm({ setShowForm, onAddTask }) {
             setShowForm(false);
           }}
           className="flex flex-col gap-4"
-        >
+          >
           <div className="flex flex-col gap-1">
             <label htmlFor="text" className="text-sm text-[#444] font-medium">
               Text:
@@ -40,12 +43,12 @@ function TaskForm({ setShowForm, onAddTask }) {
             <div className="ml-1 flex gap-2">
               {["work", "personal", "school"].map((cat) => (
                 <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setCategory(cat)}
-                  className={`px-4 py-1.5 rounded-full text-sm capitalize transition
-        ${
-          category === cat ? "bg-black text-white" : "bg-gray-100 text-gray-500"
+                key={cat}
+                type="button"
+                onClick={() => setCategory(cat)}
+                className={`px-4 py-1.5 rounded-full text-sm capitalize transition
+                  ${
+                    category === cat ? "bg-black text-white" : "bg-gray-100 text-gray-500"
         }`}
                 >
                   {cat}
@@ -70,7 +73,8 @@ function TaskForm({ setShowForm, onAddTask }) {
           </div>
         </form>
       </div>
-    </div>
+    </div> */}
+              </>
   );
 }
 

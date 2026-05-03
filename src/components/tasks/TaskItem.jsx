@@ -1,7 +1,7 @@
 import { Trash2 } from "lucide-react";
 import { Calendar } from "lucide-react";
-import EditModal from "./editModal";
-import DeleteModal from "./DeleteModal";
+import EditModal from "../editModal";
+import DeleteModal from "../DeleteModal";
 
 function TaskItem({
   task,
