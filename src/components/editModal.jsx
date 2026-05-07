@@ -56,7 +56,8 @@ function EditModal({
           </div>
           <div className="flex gap-2">
             <button
-              className="px-2 py-1 rounded-md bg-transparent text-gray-500 hover:text-gray-700 cursor-pointer"
+              // className="px-2 py-1 rounded-md bg-transparent text-gray-500 hover:text-gray-700 cursor-pointer"
+              className="cursor-pointer rounded-md px-3 py-1.5 hover:bg-gray-100 text-gray-700"
               onClick={() => setIsEditModalOpen(false)}
               type="button"
             >
@@ -64,7 +65,7 @@ function EditModal({
             </button>
             <button
               type="submit"
-              className="border px-2 py-1 text-[12px] lg:text-[16px] rounded-md bg-black text-white cursor-pointer hover:shadow-2xl"
+              className="bg-black border px-3 py-1.5 text-[16px] rounded-md text-white cursor-pointer hover:shadow-2xl"
             >
               Edit Task
             </button>

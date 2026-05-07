@@ -5,14 +5,16 @@ function PricingSection() {
     <>
       <section className="mt-10">
         <div className="mb-10 text-center">
-          <h2 className="text-xl lg:text-3xl font-bold">Pricing Plan</h2>
+          <h2 className="text-xl lg:text-3xl font-semibold text-center mt-6">
+            Pricing Plan
+          </h2>
           <p className="text-gray-500">Choose a plan that works for you</p>
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-7">
           <PricingCard
             variant="free"
             tier="Free"
-            recommendation="Great for getting started with basic task management."
+            recommendation="Great for getting started with basic task handling."
             price="$0"
             frequency="One time"
             features={[

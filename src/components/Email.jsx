@@ -49,7 +49,7 @@ function Email() {
   return (
     <>
       <section className="mt-10">
-        <h2 className="text-xl lg:text-3xl font-bold text-center mb-3">
+        <h2 className="text-xl lg:text-3xl font-semibold text-center mb-4 mt-6">
           Join Waitlist
         </h2>
         <div className=" mx-auto bg-white p-5 lg:p-10 z-50 shadow-sm rounded-2xl">

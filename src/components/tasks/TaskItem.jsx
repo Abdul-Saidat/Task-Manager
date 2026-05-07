@@ -27,17 +27,17 @@ function TaskItem({
               >
                 {task.text}
               </span>
-              <div className="flex flex-wrap gap-3">
-                <span className="text-[12px] px-3 py-1 rounded-full bg-[#a5c7f5] font-bold text-blue-600">
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <span className="text-xs px-3 py-1 rounded-full bg-blue-100 font-semibold text-blue-700">
                   {task.category}
                 </span>
-                <span className="flex items-center justify-center gap-1 text-[14px]">
+                <span className="flex items-center gap-1 text-sm text-gray-600">
                   <Calendar className="w-4 h-4" />
                   {formatId(task.createdAt)}
                 </span>
                 <button
                   onClick={() => handleEdit(task.id)}
-                  className="text-[14px] px-3 py-1 rounded-full bg-[#a5c7f5] text-blue-600 cursor-pointer"
+                  className="text-sm px-3 py-1.5 rounded-md bg-blue-100 hover:bg-blue-200 transition-colors text-blue-700 cursor-pointer"
                 >
                   Edit task
                 </button>
