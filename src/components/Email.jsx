@@ -48,7 +48,7 @@ function Email() {
   };
   return (
     <>
-      <section className="mt-7 lg:mt-10">
+      <section className="mt-10">
         <h2 className="text-xl lg:text-3xl font-semibold text-center mb-4 mt-6">
           Join Waitlist
         </h2>
@@ -68,20 +68,20 @@ function Email() {
                 onSubmit={handleEmailSubmit}
                 className="w-full"
               >
-                <div className="flex items-center gap-3 mt-5 w-full">
+                <div className="flex flex-col lg:flex-row gap-3 mt-5 w-full">
                   <input
                     type="email"
                     name="email"
                     id="email"
                     placeholder="Enter Your Email"
                     // required
-                    className={`${emailError ? "border border-red-500 flex-1 min-w-0 p-2 lg:px-3 lg:py-2 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full outline-none" : `flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none`}flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-[14px] lg:text-base rounded-full focus:border-gray-600 outline-none`}
+                    className={`${emailError ? "border border-red-500 min-w-0 px-4 py-3 lg:px-3 lg:py-2 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full outline-none" : `flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none`}p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none`}
                     value={email}
                     onChange={handleChange}
                   />
                   <button
                     type="submit"
-                    className="p-2 lg:px-4 lg:py-2 bg-blue-500 border border-blue-500 rounded-full text-white text-[12px] lg:text-[16px] cursor-pointer whitespace-nowrap shrink-0"
+                    className="px-4 py-3 lg:px-3 lg:py-2 bg-blue-500 hover:bg-blue-600 border border-blue-500 rounded-full text-white text-sm lg:text-base cursor-pointer"
                   >
                     Join Waitlist
                   </button>
