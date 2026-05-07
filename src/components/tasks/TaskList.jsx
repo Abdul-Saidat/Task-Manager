@@ -20,7 +20,7 @@ function TaskList({
   return (
     <>
       <div className="">
-        <h2 className="text-xl lg:text-3xl font-semibold text-center mb-4 mt-6">
+        <h2 className="text-xl lg:text-3xl font-semibold text-center mb-1 lg:mb-4 mt-6">
           Your tasks
         </h2>
         <div className="flex overflow-x-auto gap-4 scrollbar-hide lg:flex-wrap">

@@ -3,8 +3,8 @@ import PricingCard from "./PricingCard";
 function PricingSection() {
   return (
     <>
-      <section className="mt-10">
-        <div className="mb-10 text-center">
+      <section className="mt-7 lg:mt-10">
+        <div className="mb-4 lg:mb-10 text-center">
           <h2 className="text-xl lg:text-3xl font-semibold text-center mt-6">
             Pricing Plan
           </h2>
