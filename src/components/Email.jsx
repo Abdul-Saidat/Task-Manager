@@ -79,15 +79,16 @@ function Email() {
                     value={email}
                     onChange={handleChange}
                   />
+                    <span className="block lg:hidden text-red-500 text-center">{emailError}</span>
                   <button
                     type="submit"
                     className="px-4 py-3 lg:px-3 lg:py-2 bg-blue-500 hover:bg-blue-600 border border-blue-500 rounded-full text-white text-sm lg:text-base cursor-pointer"
                   >
                     Join Waitlist
                   </button>
+                    <span className="hidden lg:block text-red-500 text-center">{emailError}</span>
                   <ToastContainer />
                 </div>
-                <span className="text-red-500 text-center">{emailError}</span>
               </form>
             </div>
           </div>
