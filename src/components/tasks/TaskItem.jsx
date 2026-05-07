@@ -27,7 +27,7 @@ function TaskItem({
               >
                 {task.text}
               </span>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs px-3 py-1 rounded-full bg-blue-100 font-semibold text-blue-700">
                   {task.category}
                 </span>
