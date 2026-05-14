@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 function Email() {
+  const [loading, setLoading] = useState(false)
   const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
   const [emails, setEmails] = useState(() => {
@@ -25,26 +26,34 @@ function Email() {
 
     if (!normalizedEmail) {
       setEmailError("Email required");
+      setLoading(false)
       return;
     }
 
     if (!/\S+@\S+\.\S+/.test(normalizedEmail)) {
       setEmailError("Invalid email format");
+      setLoading(false)
       return;
     }
 
     if (emails.includes(normalizedEmail)) {
       setEmailError("Email already exists");
+      setLoading(false)
       return;
     }
     setEmails((prev) => {
       if (prev.includes(normalizedEmail)) return prev;
+      setLoading(true)
       return [...prev, normalizedEmail];
     });
 
     setEmail("");
     setEmailError("");
     toast.success("Subscribed successfully");
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500)
+    // setLoading(false)
   };
   return (
     <>
@@ -69,7 +78,9 @@ function Email() {
                 className="w-full"
               >
                 <div className="flex flex-col lg:flex-row gap-3 mt-5 w-full">
-                  <span className="block lg:hidden text-red-500">{emailError}</span>
+                  <span className="block lg:hidden text-red-500">
+                    {emailError}
+                  </span>
                   <input
                     type="email"
                     name="email"
@@ -84,9 +95,11 @@ function Email() {
                     type="submit"
                     className="px-4 py-3 lg:px-3 lg:py-2 bg-blue-500 hover:bg-blue-600 border border-blue-500 rounded-full text-white text-sm lg:text-base cursor-pointer"
                   >
-                    Join Waitlist
+                    {loading ? "Loading..." : "Join waitlist"}
                   </button>
-                    <span className="hidden lg:block text-red-500 text-center">{emailError}</span>
+                  <p className="hidden lg:block text-red-500 text-center">
+                    {emailError}
+                  </p>
                   <ToastContainer />
                 </div>
               </form>

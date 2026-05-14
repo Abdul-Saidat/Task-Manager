@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AddForm({
+function AddTaskModal({
   onClose,
   addTask,
   categories = ["work", "personal", "school"],
@@ -11,7 +11,7 @@ function AddForm({
   const [category, setCategory] = useState(defaultCategory);
 
   return (
-    <div className="bg-black/50 fixed inset-0 flex items-center justify-center z-50 px-5">
+    <div id="modal" className="bg-black/50 fixed inset-0 flex items-center justify-center z-50 px-5">
       <div className="bg-white p-8 max-w-xl w-full lg:max-w-md rounded-2xl">
         <form
           onSubmit={(e) => {
@@ -85,4 +85,4 @@ function AddForm({
   );
 }
 
-export default AddForm;
+export default AddTaskModal;

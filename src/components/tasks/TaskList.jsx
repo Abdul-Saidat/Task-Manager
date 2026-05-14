@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { ClipboardList } from "lucide-react";
 import TaskItem from "./TaskItem";
 
 function TaskList({
+  tasks,
   filteredTasks,
   toggleTask,
   deleteTask,
@@ -16,6 +18,12 @@ function TaskList({
       month: "long",
       day: "numeric",
     });
+
+  const [searchTerm, setSearchTerm] = useState("")
+
+
+  const searchResult = filteredTasks.filter((task) => task.text.toLowerCase().includes(searchTerm.toLowerCase()))
+
 
   return (
     <>
@@ -55,9 +63,23 @@ function TaskList({
           >
             School
           </button>
+          <div>
+             <input
+          type="search"
+          placeholder="Search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="text-slate-700 h-7 focus:border-slate-500 rounded-md border-2 border-slate-400 px-2"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+            }
+          }}
+        />
+          </div>
         </div>
 
-        {filteredTasks.length === 0 && (
+        {searchResult.length === 0 && (
           <div className="flex flex-col items-center justify-center mt-3">
             <ClipboardList size={40} className="text-gray-300 mb-2" />
             <p className="text-[#999] text-center">
@@ -68,7 +90,7 @@ function TaskList({
         )}
 
         <div className="w-full flex flex-col bg-white border border-[#e6e9ed] rounded-2xl shadow-md mt-5 ">
-          {filteredTasks.map((task, index) => (
+          {searchResult.map((task, index) => (
             <div key={task.id}>
               <TaskItem
                 handleEdit={handleEdit}
@@ -78,7 +100,7 @@ function TaskList({
                 formatId={formatId}
                 handleDeleteClick={handleDeleteClick}
               />
-              {index < filteredTasks.length - 1 && (
+              {index < searchResult.length - 1 && (
                 <div className="border-t border-[#e6e9ed]" />
               )}
             </div>

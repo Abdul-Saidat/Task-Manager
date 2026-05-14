@@ -1,15 +1,12 @@
 import { useState } from "react";
-import { useTasks } from "../components/hooks/useTasks";
 import TaskList from "../components/tasks/TaskList";
 import TaskForm from "../components/tasks/TaskForm";
 import EditModal from "../components/editModal";
 import DeleteModal from "../components/DeleteModal";
-import AddForm from "../components/ui/TaskModal";
+import AddTaskModal from "../components/ui/TaskModal";
 import TaskStats from "../components/stats/Stats";
 
-function TaskSection({ showForm, setShowForm }) {
-  const {
-    completedTasks,
+const TaskSection = ({ showForm, setShowForm, completedTasks,
     tasks,
     addTask,
     saveEditedTask,
@@ -17,14 +14,14 @@ function TaskSection({ showForm, setShowForm }) {
     filteredTasks,
     toggleTask,
     filter,
-    setFilter,
-  } = useTasks();
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    setFilter })  => {
+      const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [editTask, setEditTask] = useState(null);
   const [editText, setEditText] = useState("");
   const [editCategory, setEditCategory] = useState("school");
   const [taskToDelete, setTaskToDelete] = useState(null);
+  // const [searchTerm, setSearchTerm] = useState("")
 
   const handleEdit = (id) => {
     const selectedTask = filteredTasks.find((task) => task.id === id);
@@ -51,39 +48,45 @@ function TaskSection({ showForm, setShowForm }) {
     setTaskToDelete(null);
   };
 
-  return (
-    <>
-      {showForm && (
-        <AddForm addTask={addTask} onClose={() => setShowForm(false)} />
-      )}
-      {isEditModalOpen && (
-        <EditModal
-          setIsEditModalOpen={setIsEditModalOpen}
-          editText={editText}
-          editTask={editTask}
-          setEditText={setEditText}
-          editCategory={editCategory}
-          setEditCategory={setEditCategory}
-          saveEditedTask={handleSaveEdit}
+  // const searchResult = tasks.filter((task) => task.text.toLowerCase().includes(searchTerm.toLowerCase()))
+      
+    return (
+      <>
+        {showForm && (
+          <AddTaskModal addTask={addTask} onClose={() => setShowForm(false)} />
+        )}
+        {isEditModalOpen && (
+          <EditModal
+            setIsEditModalOpen={setIsEditModalOpen}
+            editText={editText}
+            editTask={editTask}
+            setEditText={setEditText}
+            editCategory={editCategory}
+            setEditCategory={setEditCategory}
+            saveEditedTask={handleSaveEdit}
+          />
+        )}
+        {isDeleteModalOpen && (
+          <DeleteModal
+            onCancel={() => setIsDeleteModalOpen(false)}
+            onConfirm={confirmDelete}
+          />
+        )}
+        <TaskStats tasks={tasks} completedTasks={completedTasks} />
+        <TaskList
+          filter={filter}
+          setFilter={setFilter}
+          filteredTasks={filteredTasks}
+          toggleTask={toggleTask}
+          handleDeleteClick={handleDeleteClick}
+          handleEdit={handleEdit}
+          tasks={tasks}
+          // searchTerm={searchTerm}
+          // setSearchTerm={setSearchTerm}
         />
-      )}
-      {isDeleteModalOpen && (
-        <DeleteModal
-          onCancel={() => setIsDeleteModalOpen(false)}
-          onConfirm={confirmDelete}
-        />
-      )}
-      <TaskStats tasks={tasks} completedTasks={completedTasks} />
-      <TaskList
-        filter={filter}
-        setFilter={setFilter}
-        filteredTasks={filteredTasks}
-        toggleTask={toggleTask}
-        handleDeleteClick={handleDeleteClick}
-        handleEdit={handleEdit}
-      />
-    </>
-  );
-}
+       </>
+    )
+
+  }
 
 export default TaskSection;
