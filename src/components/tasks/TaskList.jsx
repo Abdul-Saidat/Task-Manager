@@ -28,38 +28,38 @@ function TaskList({
   return (
     <>
       <div className="">
-        <h2 className="text-xl lg:text-3xl font-semibold text-center mb-1 lg:mb-4 mt-6">
+        <h2 className="dark:text-gray-100 text-xl lg:text-3xl font-semibold text-center mb-1 lg:mb-4 mt-6">
           Your tasks
         </h2>
         <div className="flex overflow-x-auto gap-4 scrollbar-hide lg:flex-wrap">
           <button
             onClick={() => setFilter("all")}
-            className={`${filter === "all" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+            className={`${filter === "all" ? `bg-black dark:bg-gray-800 text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
           >
             All
           </button>
           <button
             onClick={() => setFilter("completed")}
-            className={`${filter === "completed" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+            className={`${filter === "completed" ? `bg-black dark:bg-gray-800 text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
           >
             Completed
           </button>
           <div className="w-[1.5px] bg-gray-300 h-5 mx-1 self-center" />
           <button
             onClick={() => setFilter("work")}
-            className={`${filter === "work" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+            className={`${filter === "work" ? `bg-black dark:bg-gray-800 text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
           >
             Work
           </button>
           <button
             onClick={() => setFilter("personal")}
-            className={`${filter === "personal" ? `bg-black text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+            className={`${filter === "personal" ? `bg-black dark:bg-gray-800 text-white` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
           >
             Personal
           </button>
           <button
             onClick={() => setFilter("school")}
-            className={`${filter === "school" ? `bg-black text-white shadow-lg` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
+            className={`${filter === "school" ? `bg-black dark:bg-gray-800 text-white shadow-lg` : `bg-transparent text-[#666]`} whitespace-nowrap text-sm lg:text-base px-3 py-2 rounded-md cursor-pointer transition duration-200 hover:scale-102`}
           >
             School
           </button>
@@ -69,7 +69,7 @@ function TaskList({
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="text-slate-700 h-7 focus:border-slate-500 rounded-md border-2 border-slate-400 px-2"
+          className="dark:border-slate-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 text-slate-700 h-7 focus:border-slate-500 rounded-md border-2 border-slate-400 px-2"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();

@@ -21,11 +21,11 @@ function HeroSection({ setShowForm }) {
           Add task
         </button>
       </div>
-      <ThemeToggle />
 
-      <section className="min-h-45 text-center px-5 py-7 rounded-2xl shadow-md bg-[#cfdfeb] flex flex-col justify-center">
+      <section className="dark:bg-gray-700 dark:text-gray-100 dark:border-0 min-h-45 text-center px-5 py-7 rounded-2xl shadow-md bg-[#cfdfeb] border border-gray-200 flex flex-col justify-center">
         <QuoteBox />
       </section>
+      <ThemeToggle />
     </section>
   );
 }
