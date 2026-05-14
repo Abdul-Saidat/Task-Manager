@@ -10,7 +10,7 @@ body {
 }
 
 html.dark {
- --bg: gray;
+ --bg: #0f172a;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

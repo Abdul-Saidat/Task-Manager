@@ -87,7 +87,7 @@ function Email() {
                     id="email"
                     placeholder="Enter Your Email"
                     // required
-                    className={`${emailError ? "border border-red-500 min-w-0 px-4 py-3 lg:px-3 lg:py-2 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full outline-none" : `flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none`}p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none dark:bg-gray-800 dark:text-white dark:placeholder-slate-400 dark:*:border-slate-700 dark:focus:border-slate-600`}
+                    className={`${emailError ? "border border-red-500 min-w-0 px-4 py-3 lg:px-3 lg:py-2 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full outline-none" : `flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none`}p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none dark:bg-slate-500 dark:text-white dark:placeholder-slate-400 dark:border-slate-700 dark:focus:border-slate-600`}
                     value={email}
                     onChange={handleChange}
                   />

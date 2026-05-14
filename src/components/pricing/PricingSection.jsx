@@ -22,7 +22,7 @@ function PricingSection() {
               "10 tasks max",
               "Local storage only",
             ]}
-            buttonClassName="border border-gray-400 hover:bg-gray-100"
+            buttonClassName="border border-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 dark:hover:text-white"
           />
           <PricingCard
             variant="pro"
