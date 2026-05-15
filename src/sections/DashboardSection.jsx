@@ -24,7 +24,6 @@ const DashboardSection = ({ completedTasks, tasks }) => {
         <div className="w-full md:w-1/2 bg-green-100 p-5 md:p-6 rounded-2xl shadow-md flex flex-col gap-2">
           <span className="text-green-500"> PENDING</span>
           <span className="text-2xl lg:text-3xl font-semibold">
-            {" "}
             {tasks.length - completedTasks.length}
           </span>
           <span className="text-sm">Tasks to do</span>
@@ -32,7 +31,8 @@ const DashboardSection = ({ completedTasks, tasks }) => {
         <div className="w-full md:w-1/2 bg-pink-100 p-5 md:p-6 rounded-2xl shadow-md flex flex-col gap-2">
           <span className="text-pink-500">COMPLETION RATE</span>
           <span className="text-2xl lg:text-3xl font-semibold">
-            {(completedTasks.length / tasks.length) * 100}%
+            {(completedTasks.length == 0) ? 0 : (completedTasks.length / tasks.length) * 100}%
+            {/* {(completedTasks.length / tasks.length) * 100}% */}
           </span>
           <span className="text-sm">Overall completion</span>
         </div>
