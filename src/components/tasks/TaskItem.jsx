@@ -48,7 +48,7 @@ function TaskItem({
             className="cursor-pointer ml-auto pl-6"
             onClick={() => handleDeleteClick(task.id)}
           >
-            <Trash2 className="w-4 h-4 lg:w-5 lg:h-5" />
+            <Trash2 className="w-4 h-4 lg:w-5 lg:h-5 dark:text-white" />
           </button>
         </div>
       </div>

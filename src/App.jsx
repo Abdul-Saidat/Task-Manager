@@ -10,7 +10,7 @@ import { useTasks } from "./components/hooks/useTasks";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
     return saved ? JSON.parse(saved) : [];
@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
-  const taskData = useTasks()
+  const taskData = useTasks();
 
   return (
     <>
@@ -26,9 +26,13 @@ function App() {
       <main className="mx-auto max-w-275 px-4 py-8">
         <HeroSection showForm={showForm} setShowForm={setShowForm} />
         <section className="mt-10 mb-10">
-        <DashboardSection {...taskData} />
+          <DashboardSection {...taskData} />
         </section>
-        <TaskSection showForm={showForm} setShowForm={setShowForm} {...taskData} />
+        <TaskSection
+          showForm={showForm}
+          setShowForm={setShowForm}
+          {...taskData}
+        />
         <Email />
         <section id="pricing">
           <PricingSection />

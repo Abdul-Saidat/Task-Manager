@@ -3,7 +3,6 @@ import { ClipboardList } from "lucide-react";
 import TaskItem from "./TaskItem";
 
 function TaskList({
-  tasks,
   filteredTasks,
   toggleTask,
   deleteTask,
@@ -19,11 +18,11 @@ function TaskList({
       day: "numeric",
     });
 
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
 
-
-  const searchResult = filteredTasks.filter((task) => task.text.toLowerCase().includes(searchTerm.toLowerCase()))
-
+  const searchResult = filteredTasks.filter((task) =>
+    task.text.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <>
@@ -63,20 +62,20 @@ function TaskList({
           >
             School
           </button>
-          <div>
-             <input
-          type="search"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="dark:border-slate-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 text-slate-700 h-7 focus:border-slate-500 rounded-md border-2 border-slate-400 px-2"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-            }
-          }}
-        />
-          </div>
+        </div>
+        <div>
+          <input
+            type="search"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="dark:border-slate-500 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 mt-3 outline-none text-slate-700 w-full max-w-md p-3 h-7 focus:border-slate-800 rounded-md border border-slate-500 px-2"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
+          />
         </div>
 
         {searchResult.length === 0 && (
@@ -101,7 +100,7 @@ function TaskList({
                 handleDeleteClick={handleDeleteClick}
               />
               {index < searchResult.length - 1 && (
-                <div className="border-t border-[#e6e9ed]" />
+                <div className="border-t border-[#e6e9ed] dark:border-slate-700" />
               )}
             </div>
           ))}

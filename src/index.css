@@ -1,19 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
 :root {
   --bg: #f5f9fc;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   /* background-color: #f5f9fc; */
   background: var(--bg);
 }
 
 html.dark {
- --bg: #0f172a;
+  --bg: #0f172a;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+::-webkit-search-cancel-button {
+  color: white;
+  font-size: 50px;
 }
 
 .scrollbar-hide {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 function Email() {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
   const [emails, setEmails] = useState(() => {
@@ -26,24 +26,24 @@ function Email() {
 
     if (!normalizedEmail) {
       setEmailError("Email required");
-      setLoading(false)
+      setLoading(false);
       return;
     }
 
     if (!/\S+@\S+\.\S+/.test(normalizedEmail)) {
       setEmailError("Invalid email format");
-      setLoading(false)
+      setLoading(false);
       return;
     }
 
     if (emails.includes(normalizedEmail)) {
       setEmailError("Email already exists");
-      setLoading(false)
+      setLoading(false);
       return;
     }
     setEmails((prev) => {
       if (prev.includes(normalizedEmail)) return prev;
-      setLoading(true)
+      setLoading(true);
       return [...prev, normalizedEmail];
     });
 
@@ -51,8 +51,8 @@ function Email() {
     setEmailError("");
     toast.success("Subscribed successfully");
     setTimeout(() => {
-      setLoading(false)
-    }, 1500)
+      setLoading(false);
+    }, 1500);
     // setLoading(false)
   };
   return (
@@ -77,7 +77,7 @@ function Email() {
                 onSubmit={handleEmailSubmit}
                 className="w-full"
               >
-                <div className="flex flex-col lg:flex-row gap-3 mt-5 w-full">
+                <div className="flex flex-col gap-3 lg:flex-row mt-5 w-full">
                   <span className="block lg:hidden text-red-500">
                     {emailError}
                   </span>
@@ -87,7 +87,7 @@ function Email() {
                     id="email"
                     placeholder="Enter Your Email"
                     // required
-                    className={`${emailError ? "border border-red-500 min-w-0 px-4 py-3 lg:px-3 lg:py-2 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full outline-none" : `flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none`}p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none dark:bg-slate-500 dark:text-white dark:placeholder-slate-400 dark:border-slate-700 dark:focus:border-slate-600`}
+                    className={`${emailError ? "border border-red-500 px-4 py-3 lg:px-3 lg:py-2 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full outline-none" : `p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none`} flex-1 min-w-0 p-2 lg:px-3 lg:py-2 border border-gray-500 bg-[#f4f1fc] text-[#9698b5] text-sm lg:text-base rounded-full focus:border-gray-600 outline-none dark:bg-slate-500 dark:text-white dark:placeholder-slate-300 dark:border-slate-700 dark:focus:border-slate-600`}
                     value={email}
                     onChange={handleChange}
                   />
@@ -97,10 +97,10 @@ function Email() {
                   >
                     {loading ? "Loading..." : "Join waitlist"}
                   </button>
-                  <p className="hidden lg:block text-red-500 text-center">
-                    {emailError}
-                  </p>
                   <ToastContainer />
+                </div>
+                <div>
+                  <p className="hidden lg:block text-red-500">{emailError}</p>
                 </div>
               </form>
             </div>

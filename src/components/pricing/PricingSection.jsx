@@ -8,7 +8,9 @@ function PricingSection() {
           <h2 className="dark:text-gray-100 text-xl lg:text-3xl font-semibold text-center mt-6">
             Pricing Plan
           </h2>
-          <p className="dark:text-gray-200 text-gray-500">Choose a plan that works for you</p>
+          <p className="dark:text-gray-200 text-gray-500">
+            Choose a plan that works for you
+          </p>
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-7">
           <PricingCard

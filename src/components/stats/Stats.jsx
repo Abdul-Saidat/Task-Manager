@@ -17,7 +17,11 @@ function TaskStats({ completedTasks, tasks }) {
       <section className="mt-10">
         <div className="dark:bg-slate-500 dark:border-slate-600 w-full px-5 py-5 rounded-md border border-blue-100 shadow-md">
           <div className="flex items-center gap-2 mb-3">
-            <Icon icon="mdi:clipboard-check" width="22" className="dark:text-white" />
+            <Icon
+              icon="mdi:clipboard-check"
+              width="22"
+              className="dark:text-white"
+            />
             <h2 className="dark:text-gray-100 text-xl lg:text-2xl font-semibold">
               Overall Progress
             </h2>
@@ -30,7 +34,9 @@ function TaskStats({ completedTasks, tasks }) {
           </p>
           <ProgressBar percentage={percentage} />
           <div className="flex justify-between mt-5">
-            <p className="dark:text-black text-[#7376B2] text-sm">{percentage}% Completed</p>
+            <p className="dark:text-black text-[#7376B2] text-sm">
+              {percentage}% Completed
+            </p>
             <p className="dark:text-blacktext-[#7376B2] text-sm">
               {tasks.length - completedTasks.length === 0
                 ? "No tasks left"
@@ -42,7 +48,9 @@ function TaskStats({ completedTasks, tasks }) {
       <section className="mt-10">
         <div className="flex items-center gap-2 mb-2">
           <Icon icon="mdi:view-grid" width="20" className="dark:text-white" />
-          <h2 className="dark:text-gray-100 text-xl font-semibold">Categories</h2>
+          <h2 className="dark:text-gray-100 text-xl font-semibold">
+            Categories
+          </h2>
         </div>
         <div className="flex flex-col md:flex-row gap-4 mt-2">
           <div className="dark:bg-slate-500 dark:border-slate-600 dark:text-gray-100 w-full px-3 py-5 lg:p-5 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition">
