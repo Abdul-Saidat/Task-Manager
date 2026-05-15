@@ -5,9 +5,14 @@ const QuoteBox = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p> {error} </p>;
 
+  const truncateQuote = (text, maxLength = 150) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "...";
+  };
+
   return (
     <div>
-      <p> {quote} </p>
+      <p className="line-clamp-4 overflow-hidden"> {truncateQuote(quote)} </p>
       <button
         className="mt-5 rounded-md px-3 py-3 text-white bg-black/90 hover:bg-black dark:bg-indigo-400 cursor-pointer"
         onClick={refetch}

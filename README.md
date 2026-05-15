@@ -32,7 +32,7 @@ A lightweight task manager that helps you create, categorize and track your dail
 
 - Progress tracking (overall + per category)
 
-## Key improvements 
+## Key improvements
 
 - Refactored logic into custom hooks
 
@@ -49,6 +49,16 @@ A lightweight task manager that helps you create, categorize and track your dail
 - Custom hooks for state logic separation
 
 - UI reusability patterns
+
+## Key Improvements and Newly added features - stage 5
+
+- Added dashboard overview section to display key task stats
+
+- Added search input to the task list section
+
+- Implemented dark mode toggle: styled components based on current mode
+
+- Implemented mode persistence through localStorage
 
 ## Tech stack
 
