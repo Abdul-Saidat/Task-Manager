@@ -27,14 +27,16 @@ const DashboardSection = ({ completedTasks, tasks }) => {
           <span className="text-2xl lg:text-3xl font-semibold">
             {tasks.length - completedTasks.length}
           </span>
-          <span className="text-sm">Tasks to do</span>
+          <span className="text-sm">
+            {tasks.length - completedTasks.length == 1 ? "Task" : "Tasks"} to do
+          </span>
         </div>
         <div className="flex-1 min-w-[45%] bg-pink-100 p-4 rounded-2xl shadow-md flex flex-col gap-2">
           <span className="text-pink-500">COMPLETION RATE</span>
           <span className="text-2xl lg:text-3xl font-semibold">
             {completedTasks.length == 0
               ? 0
-              : (completedTasks.length / tasks.length) * 100}
+              : ((completedTasks.length / tasks.length) * 100).toFixed()}
             %{/* {(completedTasks.length / tasks.length) * 100}% */}
           </span>
           <span className="text-sm">Overall completion</span>
