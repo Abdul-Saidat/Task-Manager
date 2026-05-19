@@ -14,7 +14,7 @@ const QuoteBox = () => {
     <div>
       <p className="line-clamp-4 overflow-hidden"> {truncateQuote(quote)} </p>
       <button
-        className="mt-5 rounded-md px-3 py-3 text-white bg-black/90 hover:bg-black dark:bg-indigo-400 cursor-pointer"
+        className="mt-5 rounded-md px-3 py-3 text-white bg-black/90 hover:bg-black dark:bg-indigo-400 cursor-pointer dark:hover:bg-indigo-500"
         onClick={refetch}
       >
         New Quote
